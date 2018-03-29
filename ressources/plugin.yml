@@ -1,0 +1,18 @@
+name: TestPlugin
+main: fr.jak12210.Main
+version: 1.0
+author: jak12210
+commands:
+  rules:
+    description: See the server rules
+    aliases: [regles]
+  gm:
+    description: Change the gamemode
+  gamemode:
+    description: Change the gamemode
+  lang:
+    description: Change the lang
+  language:
+    description: Change the lang
+  langue:
+    description: Change the lang
