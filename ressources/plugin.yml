@@ -16,3 +16,10 @@ commands:
     description: Change the lang
   langue:
     description: Change the lang
+  money:
+    description: See your balance
+    aliases: [balance, argent]
+  addmoney:
+    description: Add money to a player
+  delmoney:
+    description: Remove money to a player

@@ -7,12 +7,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoin implements Listener {
 
-    private Main main;
+
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
         Player p = e.getPlayer();
-    main.getInstance().coins.createAccount(p);
+        Main.getInstance().coins.createAccount(p);
     p.getInventory().clear();
     }
 

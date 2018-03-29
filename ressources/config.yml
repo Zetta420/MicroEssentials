@@ -18,7 +18,13 @@ fr:
   playeroffline: "&cErreur, le joueur &4%target%&c est hors ligne !"
   playernotfound: "&cErreur, le joueur &4%target%&c est introuvable"
   nopermission: "&cErreur, vous n'avez pas la permission d'effectuer cette commande !"
+  moneystyle: "&a-==&b Crédits &a==-\n&2%money% &4%symbol%"
   rules: "&a-==&4 Règlement &a==-\n&61- &cNe pas injurer"
+  sendmoney: "&aVous venez d'ajouter &2%money%&4%symbol%&a à &4%target%!"
+  recivemoney: "&aVous venez d'être crédité &2%money%&4%symbol% &a!"
+  removemoney: "&aVous avez retiré &2%money%&4%symbol%&a à %target%!"
+  removedmoney: "&2%money%&4%symbol%&a ont été retirés de votre solde!"
+  neednumeric: "&cErreur, vous devez entrer un nombre pour l'argent.\nUtilisation : /<commande> <pseudo> <nombre>"
 en:
   survivalgm: "&aYou are now in &csurvival &amode!"
   creativegm: "&aYou are now in &ccreative &amode!"
@@ -35,7 +41,13 @@ en:
   playeroffline: "&cError, the player &4%target%&c is offline!"
   playernotfound: "&cError, the player &4%target%&c isn't registered on the server!"
   nopermission: "&cError, you don't have the permission to execute this command !"
+  moneystyle: "&a-==&b Balance &a==-\n&2%money% &4%symbol%"
   rules: "&a-==&4 Rules &a==-\n&61- &cDo not injure"
+  sendmoney: "&aYou give &2%money%&4%symbol%&a to &4%target%!"
+  recivemoney: "&aYou have been credited &2%money%&4%symbol% &a!"
+  removemoney: "&aYou have removed &2%money%&4%symbol%&a to %target%!"
+  removedmoney: "&2%money%&4%symbol%&a have been removed from your balance!"
+  neednumeric: "&cError, you should enter a number for the money.\nUsage : /<command> <user> <number>"
 mysql:
   host: "localhost"
   port: "3306"
@@ -46,3 +58,7 @@ economy:
   start: 50
   name: "EURO"
   symbol: "$"
+autobroadcast:
+  - "Ceci est un message"
+  - "Ceci en est un autre"
+  - "Et la bah lol"
