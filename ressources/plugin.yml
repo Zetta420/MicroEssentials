@@ -23,3 +23,9 @@ commands:
     description: Add money to a player
   delmoney:
     description: Remove money to a player
+  setmoney:
+    description: Set the money to a player
+  givemoney:
+    description: Give money to a player
+  broadcaster:
+    description: Start/Stop the broadcaster

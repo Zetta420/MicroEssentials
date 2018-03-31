@@ -18,13 +18,8 @@ fr:
   playeroffline: "&cErreur, le joueur &4%target%&c est hors ligne !"
   playernotfound: "&cErreur, le joueur &4%target%&c est introuvable"
   nopermission: "&cErreur, vous n'avez pas la permission d'effectuer cette commande !"
-  moneystyle: "&a-==&b Crédits &a==-\n&2%money% &4%symbol%"
-  rules: "&a-==&4 Règlement &a==-\n&61- &cNe pas injurer"
-  sendmoney: "&aVous venez d'ajouter &2%money%&4%symbol%&a à &4%target%!"
-  recivemoney: "&aVous venez d'être crédité &2%money%&4%symbol% &a!"
-  removemoney: "&aVous avez retiré &2%money%&4%symbol%&a à %target%!"
-  removedmoney: "&2%money%&4%symbol%&a ont été retirés de votre solde!"
-  neednumeric: "&cErreur, vous devez entrer un nombre pour l'argent.\nUtilisation : /<commande> <pseudo> <nombre>"
+  activebroadcast: "&aLes messages automatiques seront de-nouveau diffusés."
+  stoppedbroadcast: "&aLes messages automatiques seront cachés."
 en:
   survivalgm: "&aYou are now in &csurvival &amode!"
   creativegm: "&aYou are now in &ccreative &amode!"
@@ -40,14 +35,9 @@ en:
   setadmadvgm: "&aYou set &2%target%&a in adventure mode!"
   playeroffline: "&cError, the player &4%target%&c is offline!"
   playernotfound: "&cError, the player &4%target%&c isn't registered on the server!"
-  nopermission: "&cError, you don't have the permission to execute this command !"
-  moneystyle: "&a-==&b Balance &a==-\n&2%money% &4%symbol%"
-  rules: "&a-==&4 Rules &a==-\n&61- &cDo not injure"
-  sendmoney: "&aYou give &2%money%&4%symbol%&a to &4%target%!"
-  recivemoney: "&aYou have been credited &2%money%&4%symbol% &a!"
-  removemoney: "&aYou have removed &2%money%&4%symbol%&a to %target%!"
-  removedmoney: "&2%money%&4%symbol%&a have been removed from your balance!"
-  neednumeric: "&cError, you should enter a number for the money.\nUsage : /<command> <user> <number>"
+  nopermission: "&cError, you don't have the permission to perform this command !"
+  activebroadcast: "&aThe auto messages will be diffused."
+  stoppedbroadcast: "&aThe auto messages will be hides"
 mysql:
   host: "localhost"
   port: "3306"
@@ -58,7 +48,66 @@ economy:
   start: 50
   name: "EURO"
   symbol: "$"
+  messages:
+    fr:
+      syntax_give: "&cErreur dans la syntaxe de la commande.\nUtilisation : /givegoins <cible> <argent>"
+      syntax_set: "&cErreur dans la syntaxe de la commande.\nUtilisation : /setgoins <cible> <argent>"
+      syntax_del: "&cErreur dans la syntaxe de la commande.\nUtilisation : /delgoins <cible> <argent>"
+      syntax_add: "&cErreur dans la syntaxe de la commande.\nUtilisation : /addgoins <cible> <argent>"
+      give_money: "&aVous venez d'envoyer &2%money%&4%symbol%&a à %target%"
+      gived_money: "&a%sender% viens de vous envoyer &2%money%&4%symbol%&a !"
+      set_money: "&aVous venez de définir la solde de %target% à &2%money%&4%symbol%"
+      seted_money: "&aVotre solde viens d'être défini a &2%money%%symbol%"
+      remove_money: "&aVous avez retiré &2%money%&4%symbol%&a à %target%!"
+      removed_money: "&2%money%&4%symbol%&a ont été retirés de votre solde!"
+      recive_money: "&aVous venez d'être crédité &2%money%&4%symbol% &a!"
+      send_money: "&aVous venez d'ajouter &2%money%&4%symbol%&a à &4%target%!"
+      not_self: "&cVous ne pouvez pas vous auto-envoyer de l'argent !"
+      too_low_send: "&cVous devez envoyer au minimum 1%symbol% !"
+      not_enought: "&cVous n'avez pas suffisament d'argent pour envoyer ce montant"
+      not_numeric: "&cErreur, le montant indiqué n'étais pas numérique !"
+      balance_pattern: "&a-==&b Crédits &a==-\n&2%money% &4%symbol%"
+    en:
+      syntax_give: "&cSyntax command error.\nUsage : /givecoins <target> <money>"
+      syntax_set: "&cSyntax command error.\nUsage : /setcoins <target> <money>"
+      syntax_del: "&cSyntax command error.\nUsage : /delcoins <target> <money>"
+      syntax_add: "&cSyntax command error.\nUsage : /addcoins <target> <money>"
+      give_money: "&aYou gave &2%money%&4%symbol%&a to %target%"
+      gived_money: "&a%sender% has send to you &2%money%&4%symbol%&a !"
+      set_money: "&aYou have set %target% balance to &2%money%&4%symbol%"
+      seted_money: "&aYour balance have been set to &2%money%%symbol%"
+      remove_money: "&aYou have removed &2%money%&4%symbol%&a to %target%!"
+      removed_money: "&2%money%&4%symbol%&a have been removed from your balance!"
+      recive_money: "&aYou have been credited &2%money%&4%symbol% &a!"
+      send_money: "&aYou give &2%money%&4%symbol%&a to &4%target%!"
+      not_self: "&cYou can't give yourself !"
+      too_low_send: "&cYou have to send at least 1%symbol%"
+      not_enought: "&cYou don't have enought money to send this amount !"
+      not_numeric: "&cError, the amount you gave was not numeric !"
+      balance_pattern: "&a-==&b Balance &a==-\n&2%money% &4%symbol%"
+rules:
+  active: true
+  messages:
+    fr:
+      - "&a-==&4 Règlement &a==-"
+      - "&61- &cNe pas injurer"
+    en:
+      - "&a-==&4 Rules &a==-"
+      - "&61- &cDo not injure"
 autobroadcast:
-  - "Ceci est un message"
-  - "Ceci en est un autre"
-  - "Et la bah lol"
+  active: true
+  time: 20
+  prefix: "&4[&2EpicWars&4]&f"
+  messages:
+    fr:
+      - "&bBienvenue sur le serveur de test de Jak12210"
+      - "&bC'est ici que seront testés les plugins mis en oeuvre par Jak12210"
+      - "&bEt puis de toute façon tu kiffe"
+      - "&bEt si c'est pas le cas, t'as pas le choix"
+      - "&bMerci a tous !"
+    en:
+      - "&bWelcome on the Jak12210 server"
+      - "&bThere, the plugins created by Jak12210 are tested"
+      - "&bAnd whatever, I know you like what I do !"
+      - "&bAnd if it's not, get out !"
+      - "&bThank you all !"

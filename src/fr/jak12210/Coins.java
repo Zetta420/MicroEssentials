@@ -109,6 +109,44 @@ public class Coins {
             e.printStackTrace();
         }
     }
+    public String giveCoins(Player p, Player s, long coins){
+        if(coins < 1) return "pon";
+        try {
+            PreparedStatement sts = MySQL.getConnection().prepareStatement("SELECT coins FROM coins WHERE player_uuid=?");
+            sts.setString(1, p.getUniqueId().toString());
+            ResultSet rs = sts.executeQuery();
+            try {
+                PreparedStatement st = MySQL.getConnection().prepareStatement("SELECT coins FROM coins WHERE player_uuid=?");
+                st.setString(1, s.getUniqueId().toString());
+                ResultSet rst = st.executeQuery();
+                if(rs.next() && rst.next()){
+                    long moneyp = rs.getLong("coins");
+                    long moneys = rst.getLong("coins");
+                    sts.close();
+                    if(moneyp >= coins) {
+                        st = MySQL.getConnection().prepareStatement("UPDATE coins SET coins=? WHERE player_uuid=?");
+                        sts = MySQL.getConnection().prepareStatement("UPDATE coins SET coins=? WHERE player_uuid=?");
+                        sts.setLong(1, (coins + moneys));
+                        sts.setString(2, s.getUniqueId().toString());
+                        st.setLong(1, (moneyp - coins));
+                        st.setString(2, p.getUniqueId().toString());
+                        sts.executeUpdate();
+                        st.executeUpdate();
+                        return "oui";
+                    }else{
+                        return "non";
+                    }
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
 
 }
